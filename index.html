@@ -10,6 +10,7 @@
   <body>
     <div class="app">
       <main class="home" id="home">
+        <div class="home-inner">
         <header class="logo-wrap">
           <img src="logo.png" alt="Logo" class="logo" />
           <div class="contacts">
@@ -37,6 +38,7 @@
         <section class="hero">
           <img src="hero-placeholder.jpg" alt="Hero placeholder" class="hero-img" />
         </section>
+        </div>
       </main>
 
       <aside class="projects-panel" id="projectsPanel" aria-hidden="true">
@@ -49,17 +51,19 @@
               <img src="BookCover_Mockup.png" alt="Book cover mockup" />
             </div>
             <div class="project-meta">
-                <h3 class="project-title">Book Cover Re-Design</h3>
+                <h3 class="project-title">The Hate U Give Book Cover</h3>
             </div>
             <div class="project-detail" aria-hidden="true">
-              <p>A short description of Project 1. Click again to collapse.</p>
+              <p><strong>The Hate U Give – Cover Redesign</strong></p>
+              <p>A visual reinterpretation of the bestselling novel.</p>
+              <p>This project is a contemporary redesign of The Hate U Give, created to better reflect its themes of identity, protest, and social justice. I approached the cover with a focus on bold typography, symbolic imagery, and a clean composition that captures the emotional weight of the story. Motivated by an interest in narrative-driven design, this project explores how visual language can amplify powerful messages and connect with modern audiences.</p>
             </div>
-              <button class="show-more-btn" aria-expanded="false">Show more</button>
+            <button class="show-more-btn" aria-expanded="false">Show more</button>
           </div>
 
           <div class="project-card" tabindex="0">
             <div class="project-thumb" aria-hidden="true">
-              <img src="MindfullnessOrb.jpg" alt="MindfullnessOrb mockup" />
+              <img src="orb.png" alt="Orb mockup" />
             </div>
             <div class="project-meta">
               <h3 class="project-title">MindfullnessOrb</h3>
@@ -82,6 +86,33 @@
             <div class="project-detail" aria-hidden="true">
               <p>A short description of Project 3! Click again to collapse.</p>
             </div>
+          </div>
+        </div>
+      </aside>
+      <!-- About panel (uses same styles/behaviour as Recent Projects) -->
+      <aside class="projects-panel" id="aboutPanel" aria-hidden="true">
+        <div class="panel-header">
+          <button class="back-btn">Back</button>
+        </div>
+        <div class="projects-list">
+          <div style="padding:8px 0">
+            <h3>About</h3>
+            <p>This is placeholder About content. Replace with real bio, experience, and links.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Life Outside of Design panel (same layout) -->
+      <aside class="projects-panel" id="lifePanel" aria-hidden="true">
+        <div class="panel-header">
+          <button class="back-btn">Back</button>
+        </div>
+        <div class="projects-list">
+          <div style="padding:8px 0">
+            <h3>Life Outside of Design</h3>
+            <p>Placeholder text about hobbies, interests, and personal projects.</p>
+            <img src="hero-placeholder.jpg" alt="placeholder" style="width:100%;max-width:480px;border-radius:8px;margin-top:12px" />
           </div>
         </div>
       </aside>

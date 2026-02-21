@@ -1,28 +1,33 @@
 document.addEventListener('DOMContentLoaded',function(){
   const projectsBtn = document.getElementById('projectsBtn')
-  const backBtn = document.getElementById('backBtn')
   const aboutBtn = document.getElementById('aboutBtn')
   const lifeBtn = document.getElementById('lifeBtn')
+  const backButtons = Array.from(document.querySelectorAll('.back-btn'))
   const body = document.body
   const projectsPanel = document.getElementById('projectsPanel')
   const projectLinks = Array.from(document.querySelectorAll('.project'))
 
-  function openProjects(e){
-    e && e.preventDefault()
+  // open a panel by id, keep others closed
+  function openPanel(panelId){
     body.classList.add('show-projects')
-    projectsPanel.setAttribute('aria-hidden','false')
+    const panels = Array.from(document.querySelectorAll('.projects-panel'))
+    panels.forEach(p => {
+      if(p.id === panelId) p.setAttribute('aria-hidden','false')
+      else p.setAttribute('aria-hidden','true')
+    })
   }
 
-  function closeProjects(e){
-    e && e.preventDefault()
+  function closePanels(){
     body.classList.remove('show-projects')
-    projectsPanel.setAttribute('aria-hidden','true')
+    const panels = Array.from(document.querySelectorAll('.projects-panel'))
+    panels.forEach(p => p.setAttribute('aria-hidden','true'))
   }
 
-  projectsBtn.addEventListener('click', openProjects)
-  aboutBtn && aboutBtn.addEventListener('click', openProjects)
-  lifeBtn && lifeBtn.addEventListener('click', openProjects)
-  backBtn.addEventListener('click', closeProjects)
+  projectsBtn && projectsBtn.addEventListener('click', function(e){ e.preventDefault(); openPanel('projectsPanel') })
+  aboutBtn && aboutBtn.addEventListener('click', function(e){ e.preventDefault(); openPanel('aboutPanel') })
+  lifeBtn && lifeBtn.addEventListener('click', function(e){ e.preventDefault(); openPanel('lifePanel') })
+
+  backButtons.forEach(btn => btn.addEventListener('click', function(e){ e.preventDefault(); closePanels() }))
 
   // wire project cards to toggle details
   const projectCards = Array.from(document.querySelectorAll('.project-card'))

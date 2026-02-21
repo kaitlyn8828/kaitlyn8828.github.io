@@ -28,9 +28,20 @@ body{
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:flex-start;
+  justify-content:center;
   padding:48px 20px;
   transition:transform var(--transition);
+}
+
+.home-inner{
+  width:100%;
+  max-width:720px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  margin:0 auto;
 }
 .logo{width:220px;max-width:40%;height:auto;display:block;margin:0 auto 22px}
 
@@ -43,7 +54,39 @@ body{
 .link-btn{
   background:transparent;border:0;color:var(--accent);font-size:16px;padding:10px 14px;cursor:pointer;letter-spacing:0.02em;border-radius:6px
 }
-.link-btn:hover{color:var(--muted);background:rgba(0,0,0,0.02)}
+.link-btn:hover{color:var(--muted);background:transparent}
+
+/* Nav underline hover effect using ::before (top) and ::after (bottom)
+   Implemented with scaleX transform so lines animate without affecting layout. */
+.link-btn{position:relative;display:inline-block;color:var(--accent)}
+.link-btn::after,
+.link-btn::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #ff7ecb, #ff3fae);
+  left: 0;
+  transform: scaleX(0);
+  pointer-events: none;
+  transition: transform 0.4s ease-out;
+}
+.link-btn::before{
+  top: -5px;
+  transform-origin: left;
+}
+.link-btn::after{
+  bottom: -5px;
+  transform-origin: right;
+}
+.link-btn:hover::after,
+.link-btn:hover::before,
+.link-btn:focus::after,
+.link-btn:focus::before,
+.link-btn:focus-visible::after,
+.link-btn:focus-visible::before{
+  transform: scaleX(1);
+}
 .hero{width:100%;max-width:920px;display:flex;justify-content:center}
 .hero-img{width:100%;height:auto;border-radius:8px;box-shadow:0 6px 18px rgba(16,24,32,0.06)}
 
@@ -51,7 +94,7 @@ body{
   position:absolute;
   top:0;
   right:0;
-  width:72%;
+  width:50%;
   max-width:1000px;
   height:100%;
   background:#ebbdc9;
@@ -71,6 +114,12 @@ body{
 .project-thumb{width:100%;max-width:none;height:auto;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(16,24,32,0.06);margin-bottom:10px}
 .project-thumb img{width:100%;height:auto;display:block;max-height:300px;object-fit:cover}
 
+/* Make the first project thumbnail fit to full width (no max-height constraint) */
+.projects-list .project-card:first-child .project-thumb img{
+  max-height:220px;
+  object-fit:cover;
+}
+
 .show-more-btn{
   position:absolute;
   right:14px;
@@ -89,13 +138,15 @@ body{
 .project-meta{display:flex;align-items:center;gap:12px}
 .project-title{margin:0;font-size:18px;color:var(--accent)}
 .project-detail{overflow:hidden;max-height:0;transition:max-height 380ms ease,padding 380ms ease;color:var(--accent)}
-.project-card.active .project-detail{max-height:160px;padding-top:10px}
+.project-card.active .project-detail{max-height:320px;padding-top:10px;overflow:auto}
 
 .project-card:hover .project-thumb{transform:translateY(-4px);transition:transform 300ms}
 
 /* state when projects panel visible */
-body.show-projects .home{transform:translateX(-36%)}
-body.show-projects .projects-panel{transform:translateX(0)}
+/* shift home left so it stays centered in the remaining left portion (50% width) */
+body.show-projects .home{transform:translateX(-25%)}
+/* Bring in only the panel that is marked visible (aria-hidden="false") */
+.projects-panel[aria-hidden="false"]{transform:translateX(0)}
 
 /* responsive */
 @media (max-width:700px){

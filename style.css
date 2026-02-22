@@ -109,21 +109,21 @@ body{
 .panel-header{display:flex;justify-content:flex-start;margin-bottom:18px}
 .back-btn{background:transparent;border:1px solid var(--muted);padding:8px 12px;border-radius:6px;cursor:pointer}
 .projects-list{display:flex;flex-direction:column;gap:12px;margin-top:8px;flex:1;overflow-y:auto;padding-right:8px}
-.project-card{background:transparent;padding:12px 12px 64px 12px;border-radius:10px;cursor:pointer;position:relative}
-.project-card:focus{outline:2px solid rgba(0,0,0,0.06);outline-offset:4px}
-.project-thumb{width:100%;max-width:none;height:auto;border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(16,24,32,0.06);margin-bottom:10px}
-.project-thumb img{width:100%;height:auto;display:block;max-height:300px;object-fit:cover}
+.project-card{background:var(--card);padding:22px;border-radius:16px;cursor:pointer;position:relative;border:1px solid rgba(16,24,32,0.06);box-shadow:0 8px 0 rgba(0,0,0,0.03), 8px 8px 0 rgba(0,0,0,0.04);}
+.project-card:focus{outline:2px solid rgba(0,0,0,0.06);outline-offset:6px}
+.project-thumb{display:none}
+.project-thumb img{display:none}
 
-/* Make the first project thumbnail fit to full width (no max-height constraint) */
-.projects-list .project-card:first-child .project-thumb img{
-  max-height:220px;
-  object-fit:cover;
-}
+.card-inner{display:flex;gap:22px;align-items:center}
+.card-left{flex:0 0 220px;display:flex;align-items:center}
+.card-left img{width:200px;height:auto;border-radius:10px;box-shadow:0 8px 24px rgba(16,24,32,0.08);display:block}
+.card-right{flex:1;min-width:0}
+.project-excerpt{margin:6px 0 0 0;color:var(--muted)}
+.card-actions{display:flex;justify-content:flex-end;margin-top:14px}
+.card-actions .show-more-btn{position:relative;right:0;bottom:0}
 
 .show-more-btn{
-  position:absolute;
-  right:14px;
-  bottom:14px;
+  position:relative;
   background:var(--accent);
   color:#fff;
   border:0;
@@ -155,7 +155,7 @@ body{
   .detail-left img{width:100%;max-width:360px}
 }
 
-.project-card:hover .project-thumb{transform:translateY(-4px);transition:transform 300ms}
+.project-card:hover .card-left img{transform:translateY(-4px);transition:transform 300ms}
 
 /* state when projects panel visible */
 /* shift home left so it stays centered in the remaining left portion (50% width) */

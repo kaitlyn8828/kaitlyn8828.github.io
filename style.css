@@ -187,3 +187,6 @@ body.show-projects .home{transform:translateX(-25%)}
   .detail-two-col{grid-template-columns:1fr;}
   .detail-bottom-images img{width:100%}
 }
+
+/* Make Project 1 excerpt full paragraph black, keep others muted */
+.projects-list .project-card:first-child .project-excerpt{color:#000}

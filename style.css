@@ -148,6 +148,11 @@ body{
 .detail-title{margin:0 0 8px 0;font-size:18px}
 .detail-excerpt{margin:0 0 10px 0;color:var(--muted)}
 
+/* cover images side-by-side (used in project summary) */
+.cover-images{display:flex;gap:12px;align-items:center}
+.cover-images img{width:48%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(16,24,32,0.08);display:block}
+
+
 /* stacked layout for small screens */
 @media (max-width:700px){
   .detail-two-col{flex-direction:column;align-items:flex-start}

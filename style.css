@@ -43,7 +43,7 @@ body{
   gap:18px;
   margin:0 auto;
 }
-.logo{width:220px;max-width:40%;height:auto;display:block;margin:0 auto 22px}
+.logo{width:220px;max-width:40%;height:auto;display:block;margin:0 auto 22px;cursor:pointer}
 
 .contacts{display:flex;gap:14px;justify-content:center;align-items:center;margin-top:8px}
 .contact{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:transparent;border:0}
@@ -97,7 +97,7 @@ body{
   width:50%;
   max-width:1000px;
   height:100%;
-  background:#ebbdc9;
+  background: linear-gradient(180deg,#ffeef6,#ffd1e8);
   box-shadow: -12px 0 30px rgba(16,24,32,0.06);
   transform:translateX(100%);
   transition: transform var(--transition);
@@ -140,6 +140,10 @@ body{
 .project-detail{overflow:hidden;max-height:0;transition:max-height 380ms ease,padding 380ms ease;color:var(--accent)}
 .project-card.active .project-detail{max-height:320px;padding-top:10px;overflow:auto}
 
+/* Detail image used inside project-detail */
+.project-detail .detail-image{margin-top:12px;display:flex;justify-content:center}
+.project-detail .detail-image img{width:100%;max-width:520px;height:auto;border-radius:10px;box-shadow:0 8px 24px rgba(16,24,32,0.08);display:block}
+
 .project-card:hover .project-thumb{transform:translateY(-4px);transition:transform 300ms}
 
 /* state when projects panel visible */
@@ -147,6 +151,9 @@ body{
 body.show-projects .home{transform:translateX(-25%)}
 /* Bring in only the panel that is marked visible (aria-hidden="false") */
 .projects-panel[aria-hidden="false"]{transform:translateX(0)}
+
+/* recent projects panel uses a light pink gradient background */
+#projectsPanel{background: linear-gradient(180deg,#ffeef6,#ffd1e8)}
 
 /* responsive */
 @media (max-width:700px){

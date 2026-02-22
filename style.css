@@ -150,12 +150,7 @@ body{
 .project-meta{display:flex;align-items:center;gap:12px}
 .project-title{margin:0;font-size:18px;color:var(--accent)}
 
-.project-detail{
-  overflow:hidden;
-  max-height:0;
-  transition:max-height 420ms ease,padding 420ms ease,color:var(--accent);
-}
-.project-card.active .project-detail{max-height:900px;padding-top:12px;overflow:auto}
+.project-detail{display:none !important}
 
 /* Detail: responsive two-column grid inside the detail area */
 .detail-two-col{display:grid;grid-template-columns:260px 1fr;gap:20px;align-items:start}

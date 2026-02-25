@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded',function(){
     backFromDetailBtn.addEventListener('click', function(e){
       e.preventDefault()
       closeDetailPanel(project1Detail)
+      openPanel('projectsPanel')
     })
   }
 
@@ -87,6 +88,7 @@ document.addEventListener('DOMContentLoaded',function(){
     backFromDetail2Btn.addEventListener('click', function(e){
       e.preventDefault()
       closeDetailPanel(project2Detail)
+      openPanel('projectsPanel')
     })
   }
 
@@ -102,4 +104,65 @@ document.addEventListener('DOMContentLoaded',function(){
       }
     }
   })
+
+  // Dragging functionality for travel board items
+  const tremblantItem = document.getElementById('tremblantDraggable')
+  const japanItem = document.getElementById('japanDraggable')
+  const cancunItem = document.getElementById('cancunDraggable')
+
+  function setupDragging(element){
+    if(!element) return
+    
+    let isDragging = false
+    let currentX = 0
+    let currentY = 0
+    let initialX = 0
+    let initialY = 0
+
+    element.addEventListener('mousedown', function(e){
+      e.preventDefault()
+      isDragging = true
+      initialX = e.clientX - element.offsetLeft
+      initialY = e.clientY - element.offsetTop
+      element.style.cursor = 'grabbing'
+      element.style.zIndex = 1000
+    })
+
+    document.addEventListener('mousemove', function(e){
+      if(!isDragging || !element) return
+      
+      currentX = e.clientX - initialX
+      currentY = e.clientY - initialY
+      
+      const container = element.parentElement
+      const containerRect = container.getBoundingClientRect()
+      const elementRect = element.getBoundingClientRect()
+      
+      // Constrain movement within container
+      const relativeContainerLeft = container.offsetLeft
+      const relativeContainerTop = container.offsetTop
+      const minX = 0
+      const maxX = container.offsetWidth - element.offsetWidth
+      const minY = 0
+      const maxY = container.offsetHeight - element.offsetHeight
+      
+      currentX = Math.max(minX, Math.min(currentX, maxX))
+      currentY = Math.max(minY, Math.min(currentY, maxY))
+      
+      element.style.left = currentX + 'px'
+      element.style.top = currentY + 'px'
+    })
+
+    document.addEventListener('mouseup', function(e){
+      if(isDragging){
+        isDragging = false
+        element.style.cursor = 'grab'
+        element.style.zIndex = 1
+      }
+    })
+  }
+
+  setupDragging(tremblantItem)
+  setupDragging(japanItem)
+  setupDragging(cancunItem)
 })

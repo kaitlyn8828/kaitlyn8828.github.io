@@ -10,7 +10,7 @@ html,body{height:100%}
 body{
   margin:0;
   font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background:var(--bg);
+  background:#ffffff;
   color:var(--accent);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
@@ -50,22 +50,22 @@ body{
 .contact svg{width:22px;height:22px;fill:var(--accent);transition:transform var(--transition), fill var(--transition)}
 .contact:hover svg{transform:translateY(-3px);fill:var(--muted)}
 .contact:focus{outline:2px solid rgba(0,0,0,0.08);outline-offset:2px}
-.links{display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;margin-bottom:24px}
+.links{display:flex;flex-direction:column;gap:20px;align-items:center;justify-content:center;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;z-index:2}
 .link-btn{
-  background:transparent;border:0;color:var(--accent);font-size:16px;padding:10px 14px;cursor:pointer;letter-spacing:0.02em;border-radius:6px
+  background:transparent;border:0;color:#ffffff;font-size:20px;padding:10px 14px;cursor:pointer;letter-spacing:0.02em;border-radius:6px;font-weight:100;font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif
 }
-.link-btn:hover{color:var(--muted);background:transparent}
+.link-btn:hover{color:rgba(255,255,255,0.8);background:transparent}
 
 /* Nav underline hover effect using ::before (top) and ::after (bottom)
    Implemented with scaleX transform so lines animate without affecting layout. */
-.link-btn{position:relative;display:inline-block;color:var(--accent)}
+.link-btn{position:relative;display:inline-block;color:#ffffff}
 .link-btn::after,
 .link-btn::before{
   content: '';
   position: absolute;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #ff7ecb, #ff3fae);
+  background: #ffffff;
   left: 0;
   transform: scaleX(0);
   pointer-events: none;
@@ -87,8 +87,8 @@ body{
 .link-btn:focus-visible::before{
   transform: scaleX(1);
 }
-.hero{width:100%;max-width:920px;display:flex;justify-content:center}
-.hero-img{width:100%;height:auto;border-radius:8px;box-shadow:0 6px 18px rgba(16,24,32,0.06)}
+.hero{width:100%;max-width:600px;display:flex;justify-content:center;position:relative;margin-top:24px}
+.hero-img{width:100%;max-width:500px;height:auto}
 
 .projects-panel{
   position:absolute;
@@ -107,7 +107,7 @@ body{
   z-index:30;
 }
 .panel-header{display:flex;justify-content:flex-start;margin-bottom:18px}
-.back-btn{background:#ff69b4;color:#fff;border:1px solid #ff69b4;padding:8px 12px;border-radius:6px;cursor:pointer}
+.back-btn{background:#ff69b4;color:#fff;border:1px solid #ff69b4;padding:8px 12px;border-radius:6px;cursor:pointer;font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;font-weight:100}
 .projects-list{display:flex;flex-direction:column;gap:24px;margin-top:8px;flex:1;overflow-y:auto;padding:16px}
 
 /* Card: two-column summary (image left, text right) */
@@ -119,13 +119,14 @@ body{
   box-shadow:0 6px 18px rgba(16,24,32,0.04);
   border:1px solid rgba(16,24,32,0.04);
   overflow:hidden; /* prevent spill */
+  min-height:260px;
 }
 .project-card:focus{outline:2px solid rgba(0,0,0,0.06);outline-offset:6px}
 .card-inner{display:flex;align-items:center;gap:18px}
 .card-left{flex:0 0 180px;display:flex;align-items:center}
 .card-left img{width:160px;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(16,24,32,0.06);display:block}
 .card-right{flex:1;min-width:0}
-.project-excerpt{margin:8px 0 0 0;color:var(--muted);line-height:1.45}
+.project-excerpt{margin:8px 0 0 0;color:var(--muted);line-height:1.45;font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;font-weight:400}
 .card-actions{display:flex;justify-content:flex-end;margin-top:14px}
 .card-actions .show-more-btn{position:relative}
 
@@ -145,11 +146,13 @@ body{
   box-shadow:0 6px 18px rgba(16,24,32,0.08);
   font-size:14px;
   transition:all 0.3s ease;
+  font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight:100;
 }
 .show-more-btn:hover{opacity:0.85;transform:translateY(-2px)}
 .show-more-btn:focus{outline:2px solid rgba(255,255,255,0.1);outline-offset:2px}
 .project-meta{display:flex;align-items:center;gap:12px}
-.project-title{margin:0;font-size:18px;color:var(--accent)}
+.project-title{margin:0;font-size:18px;color:var(--accent);font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;font-weight:400}
 
 .project-detail{display:none !important}
 
@@ -166,13 +169,201 @@ body{
 
 /* state when projects panel visible */
 /* keep the left column centered within the remaining 25% */
-body.show-projects .home{width:25%;transform:none;padding:0}
+body.show-projects .home{width:25%;height:100%;transform:translateX(15%);padding:0;display:flex;flex-direction:column;justify-content:center;align-items:center}
 body.show-projects .home-inner{max-width:100%;text-align:center}
 /* Bring in only the panel that is marked visible (aria-hidden="false") */
 .projects-panel[aria-hidden="false"]{transform:translateX(0)}
 
 /* recent projects panel uses black background */
 #projectsPanel{background: #000000}
+
+#aboutPanel{
+  background: #ffffff;
+  padding: 0 !important;
+}
+
+.about-content-scroll{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 8px;
+  padding-bottom: 24px;
+}
+
+.about-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  flex-shrink: 0;
+}
+
+.about-layout{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.about-image{
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img{
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  border-radius: 40px;
+  object-fit: cover;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+.about-text{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-greeting{
+  margin: 0;
+  font-size: 48px;
+  font-weight: 100;
+  font-family: 'Futura', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #000000;
+  line-height: 1.2;
+}
+
+.about-text p{
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+}
+
+.about-socials{
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.social-icon{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #000000;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.social-icon svg{
+  width: 22px;
+  height: 22px;
+  fill: #ffffff;
+}
+
+.social-icon:hover{
+  background: #333333;
+  transform: translateY(-3px);
+}
+
+#lifePanel{
+  background: #ffffff !important;
+  padding: 0 !important;
+}
+
+.skills-layout{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 80px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.skills-column{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skills-heading{
+  margin: 0;
+  font-size: 36px;
+  font-weight: 100;
+  font-family: 'Futura', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #000000;
+  line-height: 1.2;
+}
+
+.skills-list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skills-list li{
+  font-size: 18px;
+  color: #000000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.travel-board-container{
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  display: inline-block;
+}
+
+.travel-board-bg{
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  display: block;
+}
+
+.travel-board-item{
+  position: absolute;
+  cursor: grab;
+  width: 200px;
+  height: auto;
+  top: 50px;
+  left: 50px;
+  transition: transform 0.3s ease;
+  user-select: none;
+  z-index: 1;
+}
+
+#japanDraggable{
+  top: 120px;
+  left: 250px;
+}
+
+#cancunDraggable{
+  bottom: 20px;
+  left: 20px;
+  width: 180px;
+  top: auto;
+}
+
+.travel-board-item:hover{
+  transform: rotate(-3deg) scale(1.05);
+  cursor: grab;
+}
+
+.travel-board-item:active{
+  cursor: grabbing;
+}
 
 /* Project detail panel */
 .detail-panel{
@@ -212,6 +403,8 @@ body.show-projects .home-inner{max-width:100%;text-align:center}
   color:#fff;
   margin:0 0 8px 0;
   font-size:24px;
+  font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight:400;
 }
 
 .project-subtitle{
@@ -233,7 +426,7 @@ body.show-projects .home-inner{max-width:100%;text-align:center}
 }
 
 .detail-panel .detail-right p{
-  color:rgba(255,255,255,0.9);
+  color:#ffffff;
   line-height:1.7;
   margin-bottom:16px;
 }
@@ -281,3 +474,4 @@ body.show-projects .home-inner{max-width:100%;text-align:center}
 
 /* Make Project 1 excerpt full paragraph black, keep others muted */
 .projects-list .project-card:first-child .project-excerpt{color:#000}
+.projects-list .project-card:nth-child(2) .project-excerpt{color:#000}

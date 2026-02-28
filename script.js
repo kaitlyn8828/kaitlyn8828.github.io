@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded',function(){
   const body = document.body
   const projectsPanel = document.getElementById('projectsPanel')
   const projectLinks = Array.from(document.querySelectorAll('.project'))
+  const archiveOpenBtn = document.querySelector('[data-archive-open]')
+  const archiveModal = document.getElementById('archiveModal')
+  const archiveModalClose = document.getElementById('archiveModalClose')
 
   // open a panel by id, keep others closed
   function openPanel(panelId){
@@ -92,9 +95,46 @@ document.addEventListener('DOMContentLoaded',function(){
     })
   }
 
+  function openArchiveModal(){
+    if(archiveModal){
+      archiveModal.setAttribute('aria-hidden','false')
+    }
+  }
+
+  function closeArchiveModal(){
+    if(archiveModal){
+      archiveModal.setAttribute('aria-hidden','true')
+    }
+  }
+
+  if(archiveOpenBtn){
+    archiveOpenBtn.addEventListener('click', function(e){
+      e.preventDefault()
+      openArchiveModal()
+    })
+  }
+
+  if(archiveModalClose){
+    archiveModalClose.addEventListener('click', function(e){
+      e.preventDefault()
+      closeArchiveModal()
+    })
+  }
+
+  if(archiveModal){
+    archiveModal.addEventListener('click', function(e){
+      if(e.target === archiveModal){
+        closeArchiveModal()
+      }
+    })
+  }
+
   // close with Escape
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape'){
+      if(archiveModal && archiveModal.getAttribute('aria-hidden') === 'false'){
+        closeArchiveModal()
+      } else
       if(project1Detail && project1Detail.getAttribute('aria-hidden') === 'false'){
         closeDetailPanel(project1Detail)
       } else if(project2Detail && project2Detail.getAttribute('aria-hidden') === 'false'){

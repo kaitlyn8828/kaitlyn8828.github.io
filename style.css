@@ -103,7 +103,7 @@ body{
   transition: transform var(--transition);
   display:flex;
   flex-direction:column;
-  padding:28px;
+  padding:48px;
   z-index:30;
 }
 .panel-header{display:flex;justify-content:flex-start;margin-bottom:18px}
@@ -170,7 +170,7 @@ body{
 
 /* state when projects panel visible */
 /* keep the left column centered within the remaining 25% */
-body.show-projects .home{width:25%;height:100%;transform:translateX(15%);padding:0;display:flex;flex-direction:column;justify-content:center;align-items:center}
+body.show-projects .home{width:25%;height:100%;transform:translateX(calc(15% - 20px));padding:0;display:flex;flex-direction:column;justify-content:center;align-items:center}
 body.show-projects .home-inner{max-width:100%;text-align:center}
 /* Bring in only the panel that is marked visible (aria-hidden="false") */
 .projects-panel[aria-hidden="false"]{transform:translateX(0)}
@@ -272,8 +272,132 @@ body.show-projects .home-inner{max-width:100%;text-align:center}
 }
 
 #lifePanel{
-  background: #ffffff !important;
-  padding: 28px !important;
+  background: #ecebe8 !important;
+  padding: 48px !important;
+}
+
+.archive-content-scroll{
+  display:flex;
+  flex-direction:column;
+  gap:56px;
+  flex:1;
+  overflow-y:auto;
+}
+
+.archive-hero{
+  text-align:center;
+  padding-top:8px;
+}
+
+.archive-title{
+  margin:0;
+  font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight:700;
+  font-size:64px;
+  color:#111111;
+}
+
+.archive-subtitle{
+  margin:14px 0 0;
+  font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight:100;
+  font-size:18px;
+  color:#222222;
+}
+
+.archive-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:24px;
+}
+
+.archive-tile{
+  background:#d4d4d4;
+  border-radius:8px;
+  aspect-ratio: 4 / 3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#555555;
+  font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight:100;
+  font-size:16px;
+}
+
+.archive-tile-image{
+  border:0;
+  padding:0;
+  overflow:hidden;
+  cursor:pointer;
+  position:relative;
+}
+
+.archive-thumb{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:top center;
+  display:block;
+}
+
+.archive-hover-label{
+  position:absolute;
+  inset:auto 0 0 0;
+  padding:12px 14px;
+  background:rgba(0,0,0,0.55);
+  color:#ffffff;
+  font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight:100;
+  font-size:16px;
+  text-align:center;
+  opacity:0;
+  transition:opacity 0.2s ease;
+  pointer-events:none;
+}
+
+.archive-tile-image:hover .archive-hover-label,
+.archive-tile-image:focus-visible .archive-hover-label{
+  opacity:1;
+}
+
+.archive-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.75);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.2s ease;
+  padding:24px;
+}
+
+.archive-modal[aria-hidden="false"]{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.archive-modal-image{
+  max-width:min(92vw, 900px);
+  max-height:92vh;
+  width:auto;
+  height:auto;
+  border-radius:10px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.35);
+}
+
+.archive-modal-close{
+  position:absolute;
+  top:20px;
+  right:24px;
+  border:0;
+  background:transparent;
+  color:#ffffff;
+  font-size:42px;
+  line-height:1;
+  cursor:pointer;
 }
 
 .skills-layout{
@@ -505,6 +629,7 @@ body.show-projects .home-inner{max-width:100%;text-align:center}
   .card-inner{flex-direction:column;align-items:flex-start}
   .card-left{flex:0 0 auto}
   .card-left img{width:140px}
+  .archive-grid{grid-template-columns:1fr 1fr}
 }
 
 @media (max-width:700px){
@@ -514,6 +639,9 @@ body.show-projects .home-inner{max-width:100%;text-align:center}
   .logo{width:160px}
   .detail-two-col{grid-template-columns:1fr;}
   .detail-bottom-images img{width:100%}
+  .archive-title{font-size:42px}
+  .archive-subtitle{font-size:16px}
+  .archive-grid{grid-template-columns:1fr}
 }
 
 /* Make Project 1 excerpt full paragraph black, keep others muted */
@@ -523,12 +651,14 @@ body.show-projects .home-inner{max-width:100%;text-align:center}
 /* Hide scrollbars while maintaining scroll functionality */
 .projects-list::-webkit-scrollbar,
 .about-content-scroll::-webkit-scrollbar,
+.archive-content-scroll::-webkit-scrollbar,
 .detail-content::-webkit-scrollbar{
   display: none;
 }
 
 .projects-list,
 .about-content-scroll,
+.archive-content-scroll,
 .detail-content{
   scrollbar-width: none;
   -ms-overflow-style: none;

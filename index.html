@@ -34,7 +34,7 @@
           <nav class="links">
             <button class="link-btn" id="aboutBtn">About</button>
             <button class="link-btn" id="projectsBtn">Recent Projects</button>
-            <button class="link-btn" id="lifeBtn">Life Outside of Design</button>
+            <button class="link-btn" id="lifeBtn">Archive</button>
           </nav>
         </section>
         </div>
@@ -151,42 +151,64 @@
               </div>
             </div>
           </div>
-        </div>
-      </aside>
-
-      <!-- Life Outside of Design panel (same layout) -->
-      <aside class="projects-panel" id="lifePanel" aria-hidden="true">
-        <div class="panel-header">
-          <button class="back-btn">Back</button>
-        </div>
-        <div class="about-content">
-          <div style="width:100%;max-width:900px;display:flex;flex-direction:column;align-items:center;justify-content:center">
-            <h2 style="margin:0 0 8px 0;font-size:32px;font-weight:100;font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;color:#000000">Travel Board</h2>
-            <p style="margin:0 0 24px 0;font-size:16px;color:#000000;font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;font-weight:100;text-align:center">Souvenirs from places I've travelled</p>
-            <div class="travel-board-container">
-              <img src="whiteboard.jpg" alt="Travel Board Background" class="travel-board-bg" />
-              <div class="travel-board-item" id="tremblantDraggable">
-                <div class="travel-board-piece">
-                  <img src="Tremblant.png" alt="Tremblant License Plate" class="travel-board-img" />
-                  <span class="drag-badge">Drag me</span>
+          <div class="about-content">
+            <div style="width:100%;max-width:900px;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <h2 style="margin:0 0 8px 0;font-size:32px;font-weight:100;font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;color:#000000">Life Outside Design</h2>
+              <p style="margin:0 0 24px 0;font-size:16px;color:#000000;font-family:'Futura', -apple-system, BlinkMacSystemFont, sans-serif;font-weight:100;text-align:center">Souvenirs from places I've travelled</p>
+              <div class="travel-board-container">
+                <img src="whiteboard.jpg" alt="Travel Board Background" class="travel-board-bg" />
+                <div class="travel-board-item" id="tremblantDraggable">
+                  <div class="travel-board-piece">
+                    <img src="Tremblant.png" alt="Tremblant License Plate" class="travel-board-img" />
+                    <span class="drag-badge">Drag me</span>
+                  </div>
                 </div>
-              </div>
-              <div class="travel-board-item" id="japanDraggable">
-                <div class="travel-board-piece">
-                  <img src="Japan.png" alt="Japan License Plate" class="travel-board-img" />
-                  <span class="drag-badge">Drag me</span>
+                <div class="travel-board-item" id="japanDraggable">
+                  <div class="travel-board-piece">
+                    <img src="Japan.png" alt="Japan License Plate" class="travel-board-img" />
+                    <span class="drag-badge">Drag me</span>
+                  </div>
                 </div>
-              </div>
-              <div class="travel-board-item" id="cancunDraggable">
-                <div class="travel-board-piece">
-                  <img src="Cancun.png" alt="Cancun Souvenir" class="travel-board-img" />
-                  <span class="drag-badge">Drag me</span>
+                <div class="travel-board-item" id="cancunDraggable">
+                  <div class="travel-board-piece">
+                    <img src="Cancun.png" alt="Cancun Souvenir" class="travel-board-img" />
+                    <span class="drag-badge">Drag me</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </aside>
+
+      <!-- Life Outside of Design panel -->
+      <aside class="projects-panel" id="lifePanel" aria-hidden="true">
+        <div class="panel-header">
+          <button class="back-btn">Back</button>
+        </div>
+        <div class="archive-content-scroll">
+          <section class="archive-hero">
+            <h2 class="archive-title">Archive</h2>
+            <p class="archive-subtitle">An archive of work shaped by time, curiosity, and care.</p>
+          </section>
+          <section class="archive-grid" aria-label="Archive image placeholders">
+            <button class="archive-tile archive-tile-image" type="button" data-archive-open>
+              <img src="Poverty Poster.png" alt="The State of Global Poverty poster" class="archive-thumb" />
+              <span class="archive-hover-label">Global Poverty Information Design</span>
+            </button>
+            <div class="archive-tile">Image Placeholder</div>
+            <div class="archive-tile">Image Placeholder</div>
+            <div class="archive-tile">Image Placeholder</div>
+            <div class="archive-tile">Image Placeholder</div>
+            <div class="archive-tile">Image Placeholder</div>
+          </section>
+        </div>
+      </aside>
+
+      <div class="archive-modal" id="archiveModal" aria-hidden="true">
+        <button class="archive-modal-close" id="archiveModalClose" aria-label="Close image">×</button>
+        <img src="Poverty Poster.png" alt="The State of Global Poverty poster enlarged" class="archive-modal-image" />
+      </div>
 
       <!-- Project 1 Detail Panel -->
       <aside class="detail-panel" id="project1Detail" aria-hidden="true">
